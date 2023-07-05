@@ -1,0 +1,9 @@
+.table > :not(caption) > * > th{
+    background-color: lightgray;
+}
+
+
+#infoTable 
+{
+    margin-top: 2%;
+}
