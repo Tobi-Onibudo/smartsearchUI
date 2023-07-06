@@ -4,6 +4,7 @@ import "../Styles/Home.css";
 import axios from 'axios';
 import SecTable from "./SecTable.jsx";
 import Suggestions from './Suggestions.jsx';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 function Home (){
@@ -46,7 +47,9 @@ function Home (){
 
     function useGivenCompanyName(name)
     {
+        console.log(name);
         setCompanyName(name);
+        console.log(companyName);
     }
 
     function handleNameChange (event)
@@ -97,7 +100,7 @@ function Home (){
       <div id="searchBody">
             <Form>
                 <Row>
-                    <Col md={6}>
+                    <Col md={3}>
                         <FormGroup>
                             <Label for="companyName">
                             Company Name
@@ -108,6 +111,7 @@ function Home (){
                                 placeholder="Company Name"
                                 type="text"
                                 onChange={handleNameChange}
+                                value = {companyName}
                                 // onInput={handleSuggestions}
                                 // onEmptiedCapture={clearTable}
                             />
@@ -140,7 +144,7 @@ function Home (){
 
                 <Row>
                     
-                    <Col md={6}>
+                    <Col md={3}>
                         <FormGroup>
                             <Label for="formType">
                                 Form Type

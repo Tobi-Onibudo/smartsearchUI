@@ -10,6 +10,30 @@
 
 .table
 {
-    height: 400px;
+    margin-top: 20px;
+    margin: auto;
+    height: 50px;
     overflow: scroll;
+}
+
+.table-container
+{
+   height: 800px;
+   background-color: black;
+   overflow: scroll;
+}
+
+body{
+    margin: 20px;
+}
+
+.info
+{
+    text-decoration: underline;
+    color: blue;
+    display: inline-block;
+}
+
+.info:hover{
+    cursor: pointer;
 }
