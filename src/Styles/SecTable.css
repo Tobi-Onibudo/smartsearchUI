@@ -7,3 +7,9 @@
 {
     margin-top: 2%;
 }
+
+.table
+{
+    height: 400px;
+    overflow: scroll;
+}

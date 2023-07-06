@@ -3,6 +3,7 @@ import { Button, Input, Form, Row, Col, FormGroup, Label } from 'reactstrap';
 import "../Styles/Home.css";
 import axios from 'axios';
 import SecTable from "./SecTable.jsx";
+import Suggestions from './Suggestions.jsx';
 
 
 function Home (){
@@ -12,15 +13,15 @@ function Home (){
     const [formType,setType] = useState("");
     const [tableContent,setContent] = useState([]);
     const [hasSearched,setSearched] = useState(false);
-    const [suggestions,setSuggestions] = useState();
-    const [foundSuggestions,setfoundSuggestions] = useState();
+    const [suggestions,setSuggestions] = useState([]);
+    const [foundSuggestions,setFoundSuggestions] = useState(false);
 
     let searchApiLink = "https://localhost:7061/api/SmartSearch/Search";
-    let suggestionApiLink = "https://localhost:7061/api/SmartSearch/Suggestion"
+    let suggestionApiLink = "https://localhost:7061/api/SmartSearch/Suggestion";
 
 
     useEffect(() => {
-        generateSuggestions()
+     generateSuggestions()
     },[companyName]);
 
     const getValues = () => {
@@ -43,6 +44,11 @@ function Home (){
         setSearched(true);
     }
 
+    function useGivenCompanyName(name)
+    {
+        setCompanyName(name);
+    }
+
     function handleNameChange (event)
     {
         setCompanyName(event.target.value);   
@@ -59,37 +65,28 @@ function Home (){
     }
 
 
-    async function generateSuggestions()
+     function generateSuggestions()
     {
-        const requestBody = 
+        if (companyName !== "")
         {
-            CompanyName : companyName,
-        } 
-        
-        
-        let searchResponse = await axios.post(suggestionApiLink,requestBody)
-       .then((response) => {
-            //console.log(response);
-            setSuggestions(response.data)
-         })
-        .catch( (error) => {
-        console.log(error);
-        });
+            axios.get(`https://localhost:7061/api/SmartSearch/Suggestion?companyName=${companyName}`)
+            .then((response) => {
+                setSuggestions(response.data);
 
-     
-      
-        
+            })
+            .catch( (error) => {
+            console.log(error);
+            });
 
-        if (companyName.length > 1 )
-        {
-            setSearched(true);
-            console.log("isn't 0");
-        }
-        else{
-            setSearched(false);
-        }
+            if (companyName.length > 1 )
+            {
+                setFoundSuggestions(true);
+            }
+            else{
+            setFoundSuggestions(false);
+            }
         
-        
+         }
     }
 
 
@@ -135,10 +132,13 @@ function Home (){
                 <Row>
                     {foundSuggestions ? 
                         <Col md= {3} >
-                            <Suggestions companySugg = {suggestions}/>
+                            <Suggestions suggs = {suggestions}
+                            setInput = {useGivenCompanyName}/>
                          </Col> : null 
                     }
+                </Row>
 
+                <Row>
                     
                     <Col md={6}>
                         <FormGroup>

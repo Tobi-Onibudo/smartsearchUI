@@ -1,0 +1,17 @@
+.suggestion
+{
+    background-color: gray;
+    color: white;
+    width:  15rem;
+    border-radius: 7px;
+    overflow:hidden;
+    height: 25px;
+    margin: 3px;
+}
+
+
+.suggestions
+{
+    height: 70px;
+    overflow: scroll;
+}
