@@ -8,22 +8,30 @@ function SecTable(props)
 {
     const companies = props.companies;
     const [showPopUp, setPopUp] = useState(false);
+    const [data,setData] = useState({});
     
-    function handlePopUp()
+    function handlePopUp(item)
     {
         setPopUp(!showPopUp);
+        setData(item);
     }
+    
 
         return(
-            <div cl="table-conatiner">
+        
+            companies.length != 0 ?  <div cl="table-conatiner">
             <Table
-            id="infoTable"
-            className = ".thead-light"
+           
+            className = "fixed-header infoTable thead-light"
+            style={{height : "200px"}}
             light = "true"
-            hover> 
-            
-            <thead id="heading">
-            <tr id="heading"> 
+            scrollx= "true"
+
+            hover
+            > 
+            { console.log(companies)}
+            <thead >
+            <tr > 
             <th># </th>
             <th>Action</th>
             <th>Company Name </th>
@@ -36,17 +44,21 @@ function SecTable(props)
             <tr key = {index}>
                 <td> {index+1} </td>
                 { /* create next page when clicked */ }
-                <td> <div  className = "info" onClick = {handlePopUp} >View Info</div></td>
-                {showPopUp ? <PopUp company = {item}/> : null}
+                <td> <div  id = {index} className = "info" onClick = {() => handlePopUp(item)} >View Info</div></td>
+                
                 <td> {item.companyName} </td>
                 <td> {item.formType}</td>
                 <td> {item.filingDate} </td>
+
+
             </tr>
             
             )}
             </tbody>
             </Table>
-            </div>
+
+            {showPopUp ? <PopUp company = {data}/> : null}
+            </div> : null
         );
     }
 

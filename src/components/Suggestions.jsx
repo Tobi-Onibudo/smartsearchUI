@@ -12,7 +12,7 @@ function Suggestions(props)
 
 
  return (
-    <div className="suggestions" >
+    <div className="suggestions mb-3" >
          {suggs.map((sugg,index) => 
             <div key= {index} className="suggestion" onClick={() => props.setInput(sugg.companyName)}> 
              {sugg.companyName}     

@@ -11,16 +11,19 @@ const toggle = () => setModal(!modal );
 const company = props.company;
 
 return (  
-        <Modal isOpen={modal}
+            <Modal isOpen={modal}
                 toggle={toggle}
-                modalTransition={{ timeout: 2000 }}>
-                <ModalBody>
+                centered = {true}
+                modalTransition={{ timeout: 100}}>
+            <ModalBody>
                    <p> The name of the company is {company.companyName}. <br/>
                     This was filled on {company.filingDate}.<br/>
                     The accession number is {company.sec}<br/>
                     </p>
-                </ModalBody>
+            </ModalBody>
             </Modal>
+           
+    
 )
 }
 

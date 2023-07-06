@@ -3,11 +3,9 @@
     background-color: lightgray;
     color: white;
     width:  15rem;
-    border-radius: 7px;
     overflow:hidden;
-    height: 25px;
-    margin: 3px;
-    
+    height: 5%; 
+    width:100%;
 }
 
 
@@ -19,8 +17,7 @@
 
 .suggestions
 {
-    height: 70px;
-    overflow: scroll;
-    
+    height: 10%;
+    overflow: scroll;   
 }
 

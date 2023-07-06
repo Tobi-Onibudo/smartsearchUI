@@ -108,7 +108,7 @@ function Home (){
                             <Input
                                 id="companyName"
                                 name="companyName"
-                                placeholder="Company Name"
+                                placeholder="e.g. Apple Inc, Citigroup Inc"
                                 type="text"
                                 onChange={handleNameChange}
                                 value = {companyName}
@@ -125,7 +125,7 @@ function Home (){
                             <Input
                                 id="companyCIK"
                                 name="companyCIK"
-                                placeholder="CIK"
+                                placeholder="e.g. 59123, 68733"
                                 type="number"
                                 onChange={handleCikChange}
                             />
@@ -135,10 +135,10 @@ function Home (){
 
                 <Row>
                     {foundSuggestions ? 
-                        <Col md= {3} >
+    
                             <Suggestions suggs = {suggestions}
                             setInput = {useGivenCompanyName}/>
-                         </Col> : null 
+                          : null 
                     }
                 </Row>
 
@@ -152,7 +152,7 @@ function Home (){
                             <Input
                                 id="formType"
                                 name="formType"
-                                placeholder="formType"
+                                placeholder="e.g. Form 10-K"
                                 type="text"
                                 onChange={handleTypeChange}
                             />
