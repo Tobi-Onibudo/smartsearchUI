@@ -81,10 +81,8 @@ function Home (){
 
         }
             console.log(suggestions);
-            console.log(companyName)
-            console.log(suggestions.includes(companyName))
-
-            if ((companyName.length > 0 || suggestions.length > 0) && (suggestions.findIndex(e => e.companyName === companyName)) ) 
+            console.log((suggestions.findIndex(suggestion => suggestion.companyName === companyName)))
+            if ((companyName.length > 0 || suggestions.length > 0) && (((suggestions.findIndex(e => (e.companyName === companyName))) == -1) )) 
             {
                 setFoundSuggestions(true);
             }

@@ -5,7 +5,7 @@
     width: 100% !important;
     overflow: hidden; 
     display: block;
-    height: 30px;
+    height: 40px;
     padding: 0px;
   
 }
@@ -20,7 +20,7 @@
 .suggestions
 {
     margin-top: -17px;
-    max-height: 90px;
+    max-height: 160px;
     overflow: scroll;  
     position: absolute !important;
     z-index: 10;

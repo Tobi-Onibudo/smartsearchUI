@@ -30,21 +30,29 @@ function SecTable(props)
             light = "true"
             scrollx= "true"
             hover> 
+
+            <colgroup>
+            <col className="view-info"></col>
+            <col className="view-info"></col>
+            <col className="expand"></col>
+            <col className="expand"></col>
+            <col className="expand"></col> 
+            </colgroup>
             <thead >
             <tr > 
-            <th># </th>
-            <th>Action</th>
-            <th>Company Name </th>
-            <th> Form Type</th>
-            <th> Filing Date</th>
+            <th className="view-info" ># </th>
+            <th className = "view-info" >Action </th>
+            <th className="expand">Company Name </th>
+            <th className="expand"> Form Type</th>
+            <th className="expand"> Filing Date</th>
             </tr>
             </thead>
             <tbody>
             {companies.map((item,index) => 
             <tr key = {index}>
-                <td> {index+1} </td>
+                <td className="view-info"> {index+1} </td>
                 { /* create next page when clicked */ }
-                <td> <div  id = {index} className = "info" onClick = {() => handlePopUp(item)} >View Info</div></td>
+                <td className="view-info" > <div id = {index} className = "info" onClick = {() => handlePopUp(item)} >View Info</div></td>
                 
                 <td> {item.companyName} </td>
                 <td> {item.formType}</td>

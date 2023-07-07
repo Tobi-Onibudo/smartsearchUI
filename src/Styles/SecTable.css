@@ -3,6 +3,10 @@
     background-color: lightgray;
 }
 
+.expand{
+    width: 33%;
+}
+
 .fixed-header thead th { /* the thead selector is required because there are th elements in the body */
     position: sticky;
     top:0;
@@ -18,6 +22,10 @@
     overflow: scroll;  
 }
 
+.view-info {
+ width: 200px !important;
+ padding: 8px !important;
+}
 
 .table-conttainer
 {
@@ -29,14 +37,16 @@ tr
 {
     width:100%;
 }
-th,td{
-    width:20%;
-}
+
 .info
 {
+    display: block;
     text-decoration: underline;
     color: blue;
-    display: inline-block;
+    width:100px;
+    padding-left: 8px ;
+    padding-right: 8px;
+
 }
 
 .info:hover{
