@@ -47,9 +47,10 @@ function Home (){
 
     function useGivenCompanyName(name)
     {
-        console.log(name);
+       
         setCompanyName(name);
-        console.log(companyName);
+        setFoundSuggestions(false);
+        setSuggestions([]);
     }
 
     function handleNameChange (event)
@@ -67,21 +68,21 @@ function Home (){
         setType(event.target.value);
     }
 
-
+    
      function generateSuggestions()
     {
         if (companyName !== "")
         {
-            axios.get(`https://localhost:7061/api/SmartSearch/Suggestion?companyName=${companyName}`)
+           axios.get(`https://localhost:7061/api/SmartSearch/Suggestion?companyName=${companyName}`)
             .then((response) => {
                 setSuggestions(response.data);
-
             })
             .catch( (error) => {
             console.log(error);
             });
 
-            if (companyName.length > 1 )
+            console.log(suggestions.length);
+            if (companyName.length > 0 && suggestions.length > 1) 
             {
                 setFoundSuggestions(true);
             }
@@ -118,7 +119,7 @@ function Home (){
                                 <Suggestions
                                 // className="col-md-4" 
                                 suggs = {suggestions}
-                                    setInput = {useGivenCompanyName}/>
+                                setInput = {useGivenCompanyName}/>
                                 : null }
                     </Col>
                     <Col md={3}>
