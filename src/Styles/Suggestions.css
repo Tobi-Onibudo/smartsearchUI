@@ -1,25 +1,27 @@
 .suggestion
 {
     background-color: lightgray !important;
-    color: white;
-    width:  15rem;
-    overflow:hidden;
-    height: 5%; 
-    width:95%;
+    color: white !important;
+    width: 100% !important;
+    overflow: hidden; 
+    display: block;
+    height: 30px;
     padding: 0px;
+  
 }
 
 
 .suggestion:hover{
-    background-color: gray;
+    background-color: gray ;
     cursor: pointer;
 }
 
 
 .suggestions
 {
-    height: 10%;
+    margin-top: -17px;
     overflow: scroll;  
-    z-index: 10; 
+    position: absolute !important;
+    z-index: 10;
 }
 

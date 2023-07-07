@@ -100,8 +100,8 @@ function Home (){
       <div id="searchBody">
             <Form>
                 <Row>
-                    <Col md={3}>
-                        <FormGroup>
+                    <Col md={4}className='company-col'>
+                        <FormGroup >
                             <Label for="companyName">
                             Company Name
                             </Label>
@@ -112,10 +112,14 @@ function Home (){
                                 type="text"
                                 onChange={handleNameChange}
                                 value = {companyName}
-                                // onInput={handleSuggestions}
-                                // onEmptiedCapture={clearTable}
                             />
                         </FormGroup>
+                        {foundSuggestions ? 
+                                <Suggestions
+                                // className="col-md-4" 
+                                suggs = {suggestions}
+                                    setInput = {useGivenCompanyName}/>
+                                : null }
                     </Col>
                     <Col md={3}>
                         <FormGroup>
@@ -132,12 +136,7 @@ function Home (){
                         </FormGroup>
                     </Col>
                 </Row>
-                    {foundSuggestions ? 
-    
-                            <Suggestions suggs = {suggestions}
-                            setInput = {useGivenCompanyName}/>
-                          : null 
-                    }
+                  
                 <Row>
                     <Col md={3}>
                         <FormGroup>
