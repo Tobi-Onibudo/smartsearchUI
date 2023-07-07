@@ -132,18 +132,13 @@ function Home (){
                         </FormGroup>
                     </Col>
                 </Row>
-
-                <Row>
                     {foundSuggestions ? 
     
                             <Suggestions suggs = {suggestions}
                             setInput = {useGivenCompanyName}/>
                           : null 
                     }
-                </Row>
-
                 <Row>
-                    
                     <Col md={3}>
                         <FormGroup>
                             <Label for="formType">

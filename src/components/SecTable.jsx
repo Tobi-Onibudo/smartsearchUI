@@ -16,20 +16,20 @@ function SecTable(props)
         setData(item);
     }
     
+    function closePopUp(state)
+    {
+        setPopUp(state);
+    }
 
         return(
         
-            companies.length != 0 ?  <div cl="table-conatiner">
+            companies.length != 0 ?  <div className="table-conatiner">
             <Table
-           
-            className = "fixed-header infoTable thead-light"
+            className = " infoTable fixed-header thead-light"
             style={{height : "200px"}}
             light = "true"
             scrollx= "true"
-
-            hover
-            > 
-            { console.log(companies)}
+            hover> 
             <thead >
             <tr > 
             <th># </th>
@@ -57,7 +57,7 @@ function SecTable(props)
             </tbody>
             </Table>
 
-            {showPopUp ? <PopUp company = {data}/> : null}
+            {showPopUp ? <PopUp company = {data} closePopUp= {closePopUp}/> : null}
             </div> : null
         );
     }

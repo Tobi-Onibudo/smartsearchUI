@@ -7,7 +7,10 @@ function PopUp(props)
 
 
 const [modal, setModal] = useState(true);
-const toggle = () => setModal(!modal );
+const toggle = () => {
+    setModal(!modal )
+    props.closePopUp(!modal); 
+};
 const company = props.company;
 
 return (  
