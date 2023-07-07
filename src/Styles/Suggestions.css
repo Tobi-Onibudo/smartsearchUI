@@ -20,6 +20,7 @@
 .suggestions
 {
     margin-top: -17px;
+    max-height: 90px;
     overflow: scroll;  
     position: absolute !important;
     z-index: 10;
