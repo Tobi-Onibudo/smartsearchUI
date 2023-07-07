@@ -16,7 +16,7 @@ function Home (){
     const [hasSearched,setSearched] = useState(false);
     const [suggestions,setSuggestions] = useState([]);
     const [foundSuggestions,setFoundSuggestions] = useState(false);
-
+   
     let searchApiLink = "https://localhost:7061/api/SmartSearch/Search";
     let suggestionApiLink = "https://localhost:7061/api/SmartSearch/Suggestion";
 
@@ -47,10 +47,8 @@ function Home (){
 
     function useGivenCompanyName(name)
     {
-       
         setCompanyName(name);
         setFoundSuggestions(false);
-        setSuggestions([]);
     }
 
     function handleNameChange (event)
@@ -71,9 +69,9 @@ function Home (){
     
      function generateSuggestions()
     {
-        if (companyName !== "")
-        {
-           axios.get(`https://localhost:7061/api/SmartSearch/Suggestion?companyName=${companyName}`)
+         if (companyName.trim() !== "")
+         {    
+            axios.get(`https://localhost:7061/api/SmartSearch/Suggestion?companyName=${companyName}`)
             .then((response) => {
                 setSuggestions(response.data);
             })
@@ -81,17 +79,21 @@ function Home (){
             console.log(error);
             });
 
-            console.log(suggestions.length);
-            if (companyName.length > 0 && suggestions.length > 1) 
+        }
+            console.log(suggestions);
+            console.log(companyName)
+            console.log(suggestions.includes(companyName))
+
+            if ((companyName.length > 0 || suggestions.length > 0) && (suggestions.findIndex(e => e.companyName === companyName)) ) 
             {
                 setFoundSuggestions(true);
             }
             else{
             setFoundSuggestions(false);
-            }
-        
-         }
+            }  
     }
+
+    
 
 
     
