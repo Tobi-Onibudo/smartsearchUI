@@ -9,7 +9,7 @@ function Suggestions(props)
 
 
  return (
-    <div className="suggestions " >
+    <div className="suggestions" >
          {suggs.map((sugg,index) => 
             <a key= {index} className=" suggestion dropdown-item" onClick={() =>   props.setInput(sugg.companyName)}> 
              {sugg.companyName}     

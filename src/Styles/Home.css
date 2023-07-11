@@ -1,18 +1,41 @@
-#buttonRow
+.buttonRow, .spinner-div
 {
-    float:right;
- 
+  width: 100px;
+  margin: auto;
+  margin-top: 5%;
 }
 
+.input-row
+{
+    margin-bottom: 5% ;
+}
 
-#searchBody
+.searchBody
 {
     margin-top: 5%;
 }
 
+.search-btn 
+{
+    width:100% !important;
+}
 .company-col
 {
-    margin-right: 10% !important;
+    margin-right: 7% !important;
 }
 
       
+
+/* remove increment and decrement option on number input */
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+

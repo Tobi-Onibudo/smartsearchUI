@@ -2,9 +2,9 @@
 {
     background-color: lightgray !important;
     color: white !important;
-    width: 100% !important;
+    width: inherit;
+    padding: inherit;
     overflow: hidden; 
-    display: block;
     height: 40px;
     padding: 0px;
   
@@ -19,7 +19,9 @@
 
 .suggestions
 {
-    margin-top: -17px;
+    /* margin-top: -17px; */
+    max-width: 720px;
+    width: 25%;
     max-height: 160px;
     overflow: scroll;  
     position: absolute !important;

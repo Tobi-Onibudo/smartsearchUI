@@ -1,0 +1,11 @@
+Spacing required between "smartsearch" in the header - fixed
+Form type (input) should be on the same line as other inputs - fixed
+Search button should be centered  - fixed
+There should be no incremental option on CIK (input) - fixed
+No error message when search is clicked and input fields are empty - fixed
+No error message when   Company name (input) has wrong format
+No message shown when Company CIK has wrong format
+No message shown when Form type has wrong format
+No loading button shown while data is being retrieved 
+Unnecessary Spacing on the table for filing date and form type
+CIK input field allows "e",".","+","-"

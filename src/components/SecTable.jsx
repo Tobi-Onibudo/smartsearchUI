@@ -26,7 +26,7 @@ function SecTable(props)
             companies.length != 0 ?  <div className="table-conatiner">
             <Table
             className = " infoTable fixed-header thead-light"
-            style={{height : "200px"}}
+            style={{height : "400px"}}
             light = "true"
             scrollx= "true"
             hover> 

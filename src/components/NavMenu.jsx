@@ -12,7 +12,7 @@ import '../Styles/NavMenu.css';
                 color="secondary"
                 dark>
                 <NavbarBrand href="/">
-                   SmartSearch
+                   Smart Search
                 </NavbarBrand>
             </Navbar>
     
