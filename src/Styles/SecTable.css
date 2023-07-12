@@ -4,8 +4,10 @@
 }
 
 .expand{
-    width: 33%;
+    width: 55%;
 }
+
+
 
 .fixed-header thead th { /* the thead selector is required because there are th elements in the body */
     position: sticky;
@@ -16,21 +18,41 @@
 .infoTable 
 {
     display: block;
-    width: 100% !important;
+    width: 70% !important;
+    margin:auto ;
     margin-top: 70px;
     border-top:20px ;
     overflow: scroll;  
 }
 
 .view-info {
- width: 200px !important;
+ width: 100px !important;
  padding: 8px !important;
 }
 
-.table-conttainer
+.numId
+{
+    width: 15px !important;
+    padding: 8px !important;
+}
+
+.filing-date
+{
+    width: 130px !important;
+    padding: 8px !important;
+}
+
+.form-type
+{
+    width: 100px !important;
+    padding: 8px !important;
+}
+
+.table-container
 {
     display: block;
     width:100%;
+    margin: auto;
 }
 
 tr 

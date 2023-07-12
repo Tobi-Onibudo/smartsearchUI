@@ -17,10 +17,11 @@ function Home (){
     const [suggestions,setSuggestions] = useState([]);
     const [foundSuggestions,setFoundSuggestions] = useState(false);
     const [isEmpty,setIsEmpty] = useState(false);
-    const [isLoading,setIsLoading] = useState(false);
-
+    const [wrongCIK,setWrongCIK] = useState(false);
+    const [wrongName,setWrongName] = useState(false);
+    const [wrongType,setWrongType] = useState(false);
+    const [foundData,setFoundData] = useState(false);
     
-
 
 
     let searchApiLink = "https://localhost:7061/api/SmartSearch/Search";
@@ -43,6 +44,7 @@ function Home (){
         if (companyName === "" && companyCIK === "" && formType === "")
         {
             setIsEmpty(true);
+            setFoundData(false);
         }
 
         else 
@@ -53,6 +55,7 @@ function Home (){
             .then((response) => {
                 setContent(response.data);
                 setSearched(false);
+                setFoundData(true);
             })
             .catch( (error) => {
                 console.log(error);
@@ -61,6 +64,8 @@ function Home (){
 
             
             }
+
+            
     }
 
     function useGivenCompanyName(name)
@@ -71,23 +76,47 @@ function Home (){
 
     function handleNameChange (event)
     {
+        const regex = /^([a-z]|[A-Z])+$/;
+        
+        if (event.nativeEvent.inputType === "deleteContentBackward"||regex.test(event.target.value)) {
         setCompanyName(event.target.value);   
+        setWrongName(false);
+        }
+        else
+        {
+            setWrongName(true);
+            setFoundSuggestions(false);
+            console.log(foundSuggestions);
+        }
     }
     
     function handleCikChange(event)
     {
-            const regex = /^[0-9]+$/;
-            
-            console.log(event.target.value)
-            console.log(regex.test(event.target.value))
-            if ( event.target.value === "" || regex.test(event.target.value)) {
+            const regex = /^([0-9])+$/;
+           
+            if (event.nativeEvent.inputType === "deleteContentBackward"||regex.test(event.target.value)) {
               setCIK(event.target.value);
+              setWrongCIK(false);
+            }
+            else{
+                
+                setWrongCIK(true);
+                
             }
     }
     
     function handleTypeChange(event)
     {
+        const regex = /^([a-z]|[A-Z]|-|[0-9])+$/;
+            
+        if (event.nativeEvent.inputType === "deleteContentBackward"||regex.test(event.target.value)) {
         setType(event.target.value);
+        setWrongType(false);
+        }
+        else
+        {
+            setWrongType(true);
+        }
     }
 
     
@@ -104,14 +133,19 @@ function Home (){
             });
 
         }
-        
-            if ((companyName.length > 0 || suggestions.length > 0) && (((suggestions.findIndex(e => (e.companyName === companyName))) === -1) )) 
-            {
-                setFoundSuggestions(true);
-            }
-            else{
-            setFoundSuggestions(false);
-            }  
+
+        // debugger;
+        // console.log(companyName)
+        // console.log(companyName.length)
+        // console.log((suggestions.findIndex(e => (e.companyName === companyName))) === -1)
+
+        if ((companyName.length > 0 ) && (((suggestions.findIndex(e => (e.companyName === companyName))) === -1) )) 
+        {
+            setFoundSuggestions(true);
+        }
+        else {
+        setFoundSuggestions(false);
+        }  
     }
 
     
@@ -124,8 +158,7 @@ function Home (){
       <div className="searchBody">
             <Form>
                 <Row
-                    className='input-row'
-                >
+                    className='input-row'>
                     <Col md={4} className='company-col'>
                         <FormGroup >
                             <Label for="companyName">
@@ -146,9 +179,10 @@ function Home (){
                                 className="col-md-4"
                                 suggs = {suggestions}
                                 setInput = {useGivenCompanyName}/>
-                                : null }
-
+                                : null }                           
                         </FormGroup>
+
+                        { wrongName  ? <p className='error-message'>  Wrong Format given </p> : null}
                     </Col>
                     <Col md={3}
                      className='company-col'>
@@ -160,11 +194,13 @@ function Home (){
                                 id="companyCIK"
                                 name="companyCIK"
                                 placeholder="e.g. 59123, 68733"
-                                type="number"
-                                onChange={handleCikChange}
-                                value={companyCIK}
+                                type="text"
+                                onInput={handleCikChange}
+                                value= {companyCIK}
                             />
                         </FormGroup>
+                       
+                      { wrongCIK  ? <p className='error-message'>  Wrong Format given </p> : null}
                     </Col>
             
                     <Col md={3}
@@ -176,11 +212,12 @@ function Home (){
                             <Input
                                 id="formType"
                                 name="formType"
-                                placeholder="e.g. Form 10-K"
+                                placeholder="e.g. 10-K or 10-K/A"
                                 type="text"
                                 onChange={handleTypeChange}
                             />
                         </FormGroup>
+                        { wrongType  ? <p className='error-message'>  Wrong Format given </p> : null}
                     </Col>
                     
                 </Row>
@@ -201,7 +238,9 @@ function Home (){
                 }}/> 
             </div>: <SecTable companies = {tableContent}/> }
             
-            { isEmpty ? <Message className= 'error-message'/> : null }
+            { isEmpty ? <Message className= 'error-message' text = "Sorry but please provide atleast one search criteria before clicking search"/> : null }
+
+            {(foundData && tableContent.length < 1 ) ? < Message className='error-message' text = "Sorry,there is no information found" /> : ""}
         </div>
      
     );

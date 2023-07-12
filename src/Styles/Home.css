@@ -5,6 +5,15 @@
   margin-top: 5%;
 }
 
+.error-message
+{
+  color: red;
+  text-align: center;
+}
+
+
+
+
 .input-row
 {
     margin-bottom: 5% ;
