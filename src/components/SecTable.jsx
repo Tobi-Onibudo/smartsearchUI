@@ -54,7 +54,7 @@ function SecTable(props)
                 { /* create next page when clicked */ }
                 <td className="view-info" > <div id = {index} className = "info" onClick = {() => handlePopUp(item)} >View Info</div></td>
                 
-                <td> {item.companyName} </td>
+                <td className="expand"> {item.companyName} </td>
                 <td> {item.formType}</td>
                 <td> {item.filingDate} </td>
 

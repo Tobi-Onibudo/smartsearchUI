@@ -4,7 +4,8 @@
 }
 
 .expand{
-    width: 55%;
+    width: auto;
+    padding-right : 20px !important;
 }
 
 
@@ -18,11 +19,21 @@
 .infoTable 
 {
     display: block;
-    width: 70% !important;
-    margin:auto ;
-    margin-top: 70px;
+    width: fit-content !important;
+    white-space: nowrap;
+   margin : 0px auto;
     border-top:20px ;
     overflow: scroll;  
+    
+}
+
+.table-container
+{
+    display: block;
+    width:100%;
+    margin: auto;
+    align-items: center;
+    margin-top: 70px;
 }
 
 .view-info {
@@ -48,13 +59,13 @@
     padding: 8px !important;
 }
 
-.table-container
-{
-    display: block;
-    width:100%;
-    margin: auto;
-}
 
+
+
+.required:hover
+{
+    cursor: pointer;
+}
 tr 
 {
     width:100%;
